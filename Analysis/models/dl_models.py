@@ -4,6 +4,8 @@ from scipy.ndimage import gaussian_filter1d
 from sklearn.metrics import classification_report,accuracy_score,ConfusionMatrixDisplay,confusion_matrix,precision_score,recall_score,roc_curve,roc_auc_score,balanced_accuracy_score
 import matplotlib.pyplot as plt
 
+
+from abc import abstractclassmethod
 class DLModel():
 
     def __init__(self,Xtrain,Ytrain,Xval,Yval,Xtest,Ytest):
@@ -25,7 +27,7 @@ class DLModel():
         pass
 
     @abstractclassmethod
-    def train_params(self)->dict:
+    def training_params(self)->dict:
         pass   
 
     def train(self,seed=123,verbose=0):
@@ -50,7 +52,26 @@ class DLModel():
         print(f'Test recall : {test_recall*100:.0f} %')
         print(f'Model AUC : {auc*100:.0f} %')
         self.confusion_matrix_plot()
+    
+    def test_metrics(self):
+        threshold=0.5
+        self.predictions=self.model.predict(self.Xtest)
+        self.binary_predictions=(self.predictions>threshold).astype(int)
+        test_accuracy=accuracy_score(self.Ytest,self.binary_predictions)        
+        test_balanced_accuracy=balanced_accuracy_score(self.Ytest,self.binary_predictions)        
 
+        test_precision=precision_score(self.Ytest,self.binary_predictions)
+        test_recall=recall_score(self.Ytest,self.binary_predictions)
+        auc=roc_auc_score(self.Ytest,self.binary_predictions)
+        return {"AUC":auc,
+                    "test_recall":test_recall,
+                    "test_precision":test_precision,
+                    "test_balanced_accuracy":test_balanced_accuracy,
+                    "test_accuracy":test_accuracy}
+    
+    
+    def _store_models_hyperparams(self,**kwargs):
+        self.model_hyperparams=kwargs
 
     @staticmethod
     def __unpack_data_history(history_record,key):
@@ -145,5 +166,6 @@ class DLModel():
 
     def multiple_seeds_analysis(self,seeds:list):
         pass
-          
+    
+
     
