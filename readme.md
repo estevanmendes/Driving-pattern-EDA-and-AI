@@ -16,18 +16,32 @@ The jupyter notebook outline:
 - Data cleaning and preprocessing
 
 - Data Loader
+    - Denoising data
+    - [Dataloader class](Analysis\dataloader\dataloader.py)
 
 - ML models 
+    - [ML base class](Analysis\models\ml_model.py)
+    - Logistic Regression
+    - SVM
+    - Random Forest
+    - Naive Bayes
+    - XGBRegressor     
+- DL models
+    - [DL Base class](Analysis\models\dl_model.py)
+    - MLP models
 
-- MLP models
+    - CNN model following [1] with recurrence plot aproach
 
-- CNN model following [1] with recurrence plot aproach
+    - Transfer learning - MobileNetV2
 
-- Transfer learning
-
-- RNN models (GRU,LSTM)
+    - RNN models (GRU,LSTM)
 
 - Hyperparams Finetunnig 
+    - Random Grid Search CV
+        - [Code](Analysis\model_selection\random_grid_search_cv.py) 
+    - Grid Search CV
+        - [Code](Analysis\model_selection\grid_search_cv.py)
+    - Best model evaluation
 
 ## Hightlights
 
@@ -61,10 +75,10 @@ Since we a very concerned to detect properly the agrevisse behaviour the higher 
 
 ## Analysis Package
 
-A package was created contaning the dataloader codes and the machine learning and deep learning code which speed up the trainning, validation, testing and evalution process.
+A package was created contaning the dataloader codes and the machine learning and deep learning base code which speed up the trainning, validation, testing and evalution process.
 
 
-
+Also, there are few code for hyperparams finetuning using Keras-tunner. It was implementaded a random search CV, and GridSearch CV. 
 
 # Futher informations
 
