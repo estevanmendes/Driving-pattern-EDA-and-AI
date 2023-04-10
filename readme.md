@@ -20,14 +20,14 @@ The jupyter notebook outline:
     - [Dataloader class](Analysis/dataloader/dataloader.py)
 
 - ML models 
-    - [ML base class](Analysis/models/ml_model.py)
+    - [ML base class](Analysis/models/ml_models.py)
     - Logistic Regression
     - SVM
     - Random Forest
     - Naive Bayes
     - XGBRegressor     
 - DL models
-    - [DL Base class](Analysis/models/dl_model.py)
+    - [DL Base class](Analysis/models/dl_models.py)
     - MLP models
 
     - CNN model following [1] with recurrence plot aproach
