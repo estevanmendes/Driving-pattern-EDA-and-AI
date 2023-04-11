@@ -59,15 +59,15 @@ The  [dataset](https://www.kaggle.com/datasets/outofskills/driving-behavior) was
 
 ## Best model metrics
 
-The best model found using accuracy, balanced accuracy, AUC, precision and recall was LSTM.
+The best model found using accuracy, balanced accuracy, AUC, precision and recall was a GRU.
 
 |  Metric |  Mean (%)  | Std (%)  |
 |---|---|---|
-| Balanced Accuracy  |70   | 1 | 
-| Recall  | 67  | 1  | 
-| Precision  | 53  | 4   | 
-| Accuracy  | 71  | 3   | 
-| AUC  | 70  | 1   | 
+| Balanced Accuracy  |77   | 1 | 
+| Recall  | 76  | 4  | 
+| Precision  | 55  | 4   | 
+| Accuracy  | 77  | 2   | 
+| AUC  | 77  | 1   | 
 
 Since we a very concerned to detect properly the agrevisse behaviour the higher recall was prioritaized. 
 
